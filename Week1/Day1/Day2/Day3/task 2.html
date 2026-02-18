@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog Grid Layout</title>
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #cbf05a;
+        }
+
+        header {
+            background-color: #1f142b;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+    
+        .blog-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .blog-card {
+            background-color: rgb(249, 112, 213);
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        .blog-card h3 {
+            color: #2c3e50;
+        }
+
+        .blog-card p {
+            color: #555;
+        }
+
+        .blog-card button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .blog-card button:hover {
+            background-color: #2c3e50;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>My Blog Website</h1>
+</header>
+
+<main class="blog-container">
+
+    <div class="blog-card">
+        <h3>HTML</h3>
+        <p>hypertext markup language,used todisplay the content in the browser.</p>
+        <button>Read More</button>
+    </div>
+
+    <div class="blog-card">
+        <h3>CSS Styling</h3>
+        <p>Understand colors, fonts, spacing and layout.</p>
+        <button>Read More</button>
+    </div>
+
+    <div class="blog-card">
+        <h3>Java</h3>
+        <p>java is a high level programming language many features are there.</p>
+        <button>Read More</button>
+    </div>
+
+    <div class="blog-card">
+        <h3>javascript</h3>
+        <p>JavaScript is a programming language used to make websites interactive and dynamic..</p>
+        <button>Read More</button>
+    </div>
+
+</main>
+
+</body>
+</html>
+
