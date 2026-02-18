@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home - Registration</title>
+</head>
+<body>
+<nav>
+    <a href="index.html">Home</a> |
+    <a href="contact.html">Contact</a>
+</nav>
+
+<h2>Student Registration Form</h2>
+
+<form action="re.php" method="post">
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"
+           placeholder="Enter your name" required>
+    <br><br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+    <br><br>
+
+    <label>Password:</label><br>
+    <input type="password" id="pwd" name="pwd" placeholder="Enter password" required>
+    <br><br>
+    <label>Gender:</label>
+    <input type="radio" name="gender" value="Male" required> Male
+    <input type="radio" name="gender" value="Female"> Female
+    <br><br>
+    <label for="course">Select Course:</label>
+    <select id="course" name="course" required>
+        
+        <option value="HTML">HTML</option>
+        <option value="CSS">CSS</option>
+        <option value="JavaScript">JavaScript</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Register">
+
+</form>
+
+</body>
+</html>

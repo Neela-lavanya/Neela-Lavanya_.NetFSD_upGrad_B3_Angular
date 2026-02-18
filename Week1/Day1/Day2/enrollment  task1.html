@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Enrollment Form</title>
+</head>
+<body>
+
+<header>
+    <h1>Online Learning Platform</h1>
+    <h2>Course Enrollment Form</h2>
+</header>
+
+<nav>
+    <a href="homee.html">Home</a> |
+    <a href="coursee.html">Courses</a> |
+    <a href="contactt.html">Contact</a>
+</nav>
+
+<section>
+
+<form action="enro.php" method="post" autocomplete="off">
+    <fieldset>
+    <legend>Course Enrollment</legend>
+
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" name="name" autofocus required>
+    <br><br>
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" name="email" required>
+    <br><br>
+    <label for="course">Select Course:</label>
+    <input list="courses" id="course" name="course" required>
+
+    <datalist id="courses">
+        <option value="HTML">
+        <option value="CSS">
+        <option value="JavaScript">
+        <option value="Python">
+        <option value="Java">
+    </datalist>
+    <br><br>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" min="16" max="60" required>
+    <br><br>
+    <label>Skill Level(Beginner to Advanced) :</label>
+    <input type="range" id="skill" name="skill" min="1" max="10" value="5">
+    <br><br>
+
+    <label>Skill Level Indicator:</label>
+    <meter min="1" max="10" value="5">7 out of 10</meter>
+    <br><br>
+    <label>Enrollment Completion:</label>
+    <progress value="50" max="100"></progress>
+    <br><br>
+
+  
+    <input type="submit" value="Enroll">
+    </fieldset>
+
+</form>
+
+</section>
+
+</body>
+</html>
