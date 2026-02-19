@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Web Page</title>
+    
+    <style>
+      
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d7da9c;
+            padding: 20px;
+            transition: 0.3s;
+        }
+
+        nav ul {
+            display: flex; 
+            list-style: none;
+            background: #4b14cb;
+            padding: 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+        }
+
+       
+        @media screen and (max-width: 600px) {
+           
+            body {
+                background-color: #add8e6; 
+            }
+
+          
+            h1 {
+                font-size: 24px;
+            }
+
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                padding: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <h1>Responsiveness and Screen Ability</h1>
+    <p>This page is responsive using media queries</p>
+
+</body>
+</html>

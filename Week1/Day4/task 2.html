@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Grade Evaluator</title>
+</head>
+<body>
+
+<h2>Student Grade Evaluator</h2>
+
+<label>Enter Marks:</label>
+<input type="number" id="marks" placeholder="Enter marks">
+<br><br>
+
+<button onclick="calculateGrade()">Check Grade</button>
+
+<h3 id="result"></h3>
+
+<script>
+function calculateGrade() {
+
+    let marks = document.getElementById("marks").value;
+    let grade;
+
+    if (marks >= 75) {
+        grade = "Grade A";
+    }
+    else if (marks >= 60) {
+        grade = "Grade B";
+    }
+    else if (marks >= 40) {
+        grade = "Grade C";
+    }
+    else {
+        grade = "Fail";
+    }
+
+    document.getElementById("result").innerHTML =
+        "Marks: " + marks + "<br>Grade: " + grade;
+}
+</script>
+
+</body>
+</html>

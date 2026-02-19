@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Discount Calculator</title>
+</head>
+<body>
+
+<script>
+
+let amount = 4000;
+let discount = 0;
+let finalAmount = 0;
+
+if (amount >= 5000) {
+    discount = amount * 20 / 100;  
+}
+else if (amount >= 3000) {
+    discount = amount * 10 / 100;  
+}
+else {
+    discount = 0;                   
+}
+
+finalAmount = amount - discount;
+console.log("Purchase Amount:", amount);
+console.log("Discount Amount:", discount);
+console.log("Final Payable Amount:", finalAmount);
+
+</script>
+
+</body>
+</html>
