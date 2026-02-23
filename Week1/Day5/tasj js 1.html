@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Greeting Generator</title>
+    <style>
+        p{
+            background-color: rgb(23, 198, 49);
+            color: aqua;
+        }
+        button{
+            background-color: rgb(153, 93, 105);
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Greeting Generator</h2>
+
+    <!-- Input box -->
+    <input type="text" id="username" placeholder="Enter your name">
+
+    <button onclick="generateGreeting()">Generate Greeting</button>
+
+    <!-- Paragraph to display greeting -->
+    <p id="greetMessage"></p>
+
+    <script>
+        function generateGreeting() {
+            // Get value from input box
+            let name = document.getElementById("username").value;
+
+            // Greeting variable declared inside the function (local scope)
+            let message = "Hello, " + name + "! Welcome to our website.";
+
+            // Display greeting inside <p> element
+            document.getElementById("greetMessage").innerText = message;
+        }
+    </script>
+
+</body>
+</html>

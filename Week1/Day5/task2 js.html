@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Info Display</title>
+</head>
+<body>
+
+    <h2>User Information</h2>
+
+    <!-- Button to trigger function -->
+    <button onclick="showUser()">Display User Info</button>
+
+    <!-- Container where data will be displayed -->
+    <div id="output"></div>
+
+    <script>
+        // Create user object
+        const user = {
+            name: "Lavi",
+            age: 22,
+            city: "Madanapalle"
+        };
+
+        // Function to display user info
+        function displayUserInfo(userObj) {
+            const outputDiv = document.getElementById("output");
+
+            // Clear previous content
+            outputDiv.innerHTML = "";
+            // Create paragraph elements
+            const namePara = document.createElement("p");
+            namePara.textContent = "Name: " + userObj.name;
+
+            const agePara = document.createElement("p");
+            agePara.textContent = "Age: " + userObj.age;
+
+            const cityPara = document.createElement("p");
+            cityPara.textContent = "City: " + userObj.city;
+
+            // Append paragraphs to div
+            outputDiv.appendChild(namePara);
+            outputDiv.appendChild(agePara);
+            outputDiv.appendChild(cityPara);
+
+            
+        }
+
+        // Button trigger function
+        function showUser() {
+            displayUserInfo(user);
+        }
+    </script>
+
+</body>
+</html>
