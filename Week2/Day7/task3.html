@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Filter</title>
+</head>
+<body>
+
+<h3>Employee System</h3>
+
+<select id="jobSelect">
+    <option value="All">All Employees</option>
+    <option value="Manager">Manager</option>
+    <option value="Salesman">Salesman</option>
+    <option value="Clerk">Clerk</option>
+</select>
+
+<button onclick="showEmployees()">Show Emps</button>
+
+<div id="output"></div>
+
+<script>
+
+var employees = [
+    {empno:101, name:"Ravi", job:"Manager", salary:80000},
+    {empno:102, name:"Anita", job:"Salesman", salary:40000},
+    {empno:103, name:"Kiran", job:"Clerk", salary:25000},
+    {empno:104, name:"Sunil", job:"Manager", salary:85000},
+    {empno:105, name:"Priya", job:"Salesman", salary:45000}
+   
+];
+
+function showEmployees() {
+
+    var job = document.getElementById("jobSelect").value;
+    var data = employees;
+
+    if(job != "All") {
+        data = employees.filter(function(emp){
+            return emp.job == job;
+        });
+    }
+
+    var table = "<table border='1'><tr><th>No</th><th>Name</th><th>Job</th><th>Salary</th></tr>";
+
+    for(var i=0; i<data.length; i++){
+        table += "<tr><td>"+data[i].empno+"</td><td>"+data[i].name+
+                 "</td><td>"+data[i].job+"</td><td>"+data[i].salary+"</td></tr>";
+    }
+
+    table += "</table>";
+
+    document.getElementById("output").innerHTML = table;
+}
+
+</script>
+
+</body>
+</html>

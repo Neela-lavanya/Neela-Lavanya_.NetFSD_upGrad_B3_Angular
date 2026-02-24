@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Marks Analyzer</title>
+</head>
+<body>
+
+<h2>Student Marks Analyzer</h2>
+<button onclick="analyzeMarks()">Analyze Marks</button>
+<pre id="output"></pre>
+<script>
+const marks = [78, 88, 32, 90, 70];
+ // Calculate total using reduce()
+    const calculateTotal = (marksArray) =>
+        marksArray.reduce(function(total, mark) {
+            return total + mark;
+        }, 0);
+    const calculateAverage = (marksArray) => {
+        const total = calculateTotal(marksArray);
+        return total / marksArray.length;
+    };
+// Determine pass/fail
+    const getResult = (average) =>
+        average >= 35 ? "Pass" : "Fail";
+    function analyzeMarks() {
+ // Using map() (processing array)
+        const processedMarks = marks.map(function(mark) {
+            return mark;
+        });
+        const total = calculateTotal(processedMarks);
+        const average = calculateAverage(processedMarks);
+        const result = getResult(average);
+        const output = `
+Student Marks Analysis
+-------------------------
+Marks   : ${processedMarks.join(", ")}
+Total   : ${total}
+Average : ${average.toFixed(2)}
+Result  : ${result}
+`;
+        document.getElementById("output").textContent = output;
+    }
+</script>
+</body>
+</html>
