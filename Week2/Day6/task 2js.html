@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Form Validation</title>
+</head>
+<body>
+
+    <h2>Registration Form</h2>
+
+    Name:
+    <input type="text" id="name" onchange="validateName()">
+    <p id="nameMsg"></p>
+
+    <br>
+    Email:
+    <input type="text" id="email" onchange="validateEmail()">
+    <p id="emailMsg"></p>
+
+    <br>
+    Age:
+    <input type="number" id="age" onchange="validateAge()">
+    <p id="ageMsg"></p>
+
+    <br><br>
+    <button onclick="saveData()">Submit</button>
+
+    <p id="finalMsg"></p>
+
+<script>
+    function validateName() {
+        var name = document.getElementById("name").value;
+
+        if (name.trim() === "") {
+            document.getElementById("nameMsg").innerHTML = "Name cannot be empty";
+        } else {
+            document.getElementById("nameMsg").innerHTML = "Valid Name";
+        }
+    }
+    function validateEmail() {
+        var email = document.getElementById("email").value;
+
+        if (email.includes("@")) {
+            document.getElementById("emailMsg").innerHTML = "Valid Email";
+        } else {
+            document.getElementById("emailMsg").innerHTML = "Email must contain @";
+        }
+    }
+
+    function validateAge() {
+        var age = document.getElementById("age").value;
+
+        if (age > 18) {
+            document.getElementById("ageMsg").innerHTML = "Valid Age";
+        } else {
+            document.getElementById("ageMsg").innerHTML = "Age must be greater than 18";
+        }
+    }
+
+    function saveData() {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var age = document.getElementById("age").value;
+
+        if (name.trim() !== "" && email.includes("@") && age > 18) {
+
+            sessionStorage.setItem("userName", name);
+            sessionStorage.setItem("userEmail", email);
+            sessionStorage.setItem("userAge", age);
+
+            document.getElementById("finalMsg").innerHTML = "Data Saved Successfully!";
+        } else {
+            document.getElementById("finalMsg").innerHTML = "Please fix errors before submitting.";
+        }
+    }
+
+</script>
+
+</body>
+</html>

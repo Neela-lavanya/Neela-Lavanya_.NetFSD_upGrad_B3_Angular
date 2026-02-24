@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Location Logger</title>
+</head>
+<body>
+
+<h2>Location Logger</h2>
+
+<button onclick="getLocation()">Get My Location</button>
+
+<h3>Current Location:</h3>
+<p id="currentLocation"></p>
+
+<h3>Last 5 Locations:</h3>
+<ul id="historyList"></ul>
+
+<script>
+
+function getLocation() {
+
+    if (!navigator.geolocation) {
+        alert("Geolocation not supported");
+        return;
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error);
+}
+
+function success(position) {
+
+    var lat = position.coords.latitude;
+    var lon = position.coords.longitude;
+
+    document.getElementById("currentLocation").innerHTML =
+        "Latitude: " + lat + "<br>Longitude: " + lon;
+
+    saveLocation(lat, lon);
+}
+
+function error() {
+    alert("Unable to get location");
+}
+
+function saveLocation(lat, lon) {
+
+    var list = JSON.parse(localStorage.getItem("locationHistory")) || [];
+
+    var obj = {
+        latitude: lat,
+        longitude: lon,
+        time: new Date().toLocaleString()
+    };
+
+    list.push(obj);
+
+    
+    if (list.length > 5) {
+        list.shift();
+    }
+
+    localStorage.setItem("locationHistory", JSON.stringify(list));
+
+    showHistory();
+}
+
+function showHistory() {
+
+    var data = JSON.parse(localStorage.getItem("locationHistory")) || [];
+    var ul = document.getElementById("historyList");
+
+    ul.innerHTML = "";
+
+    for (var i = 0; i < data.length; i++) {
+        var li = document.createElement("li");
+        li.innerHTML = 
+            "Lat: " + data[i].latitude +
+            ", Lon: " + data[i].longitude +
+            " (" + data[i].time + ")";
+        ul.appendChild(li);
+    }
+}
+
+window.onload = function() {
+    showHistory();
+};
+
+</script>
+
+</body>
+</html>
