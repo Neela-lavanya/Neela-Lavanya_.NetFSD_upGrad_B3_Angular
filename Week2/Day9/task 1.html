@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Class Example</title>
+</head>
+<body>
+
+    <h2>Student Details</h2>
+    <div id="output"></div>
+
+    <script>
+
+        // ===== Student Class =====
+        class Student {
+
+            constructor(name, rollNumber, marks) {
+                this.name = name;
+                this.rollNumber = rollNumber;
+                this.marks = marks;
+            }
+            getDetails() {
+                return `
+                    Name: ${this.name} <br>
+                    Roll Number: ${this.rollNumber} <br>
+                    Marks: ${this.marks}
+                `;
+            }
+            getGrade() {
+                if (this.marks >= 90) {
+                    return "A";
+                } else if (this.marks >= 75) {
+                    return "B";
+                } else if (this.marks >= 50) {
+                    return "C";
+                } else {
+                    return "Fail";
+                }
+            }
+        }
+
+        const student1 = new Student("Lavanya", 101, 92);
+        const student2 = new Student("Indu", 99, 68);
+
+        const outputDiv = document.getElementById("output");
+
+        outputDiv.innerHTML += "<h3>Student 1</h3>";
+        outputDiv.innerHTML += student1.getDetails();
+        outputDiv.innerHTML += "<br>Grade: " + student1.getGrade();
+        outputDiv.innerHTML += "<hr>";
+
+        outputDiv.innerHTML += "<h3>Student 2</h3>";
+        outputDiv.innerHTML += student2.getDetails();
+        outputDiv.innerHTML += "<br>Grade: " + student2.getGrade();
+
+    </script>
+
+</body>
+</html>

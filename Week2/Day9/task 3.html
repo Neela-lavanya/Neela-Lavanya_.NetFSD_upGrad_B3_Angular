@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Polymorphism Example</title>
+</head>
+<body>
+
+<h2>Payment System</h2>
+<div id="output"></div>
+
+<script>
+class Payment {
+    pay(amount) {
+        return "Processing payment of ₹" + amount;
+    }
+}
+
+class CreditCardPayment extends Payment {
+    pay(amount) {
+        return "Paid ₹" + amount + " using Credit Card";
+    }
+}
+
+class UPIPayment extends Payment {
+    pay(amount) {
+        return "Paid ₹" + amount + " using UPI";
+    }
+}
+class CashPayment extends Payment {
+    pay(amount) {
+        return "Paid ₹" + amount + " using Cash";
+    }
+}
+const payment1 = new CreditCardPayment();
+const payment2 = new UPIPayment();
+const payment3 = new CashPayment();
+
+const outputDiv = document.getElementById("output");
+
+outputDiv.innerHTML += payment1.pay(500) + "<br>";
+outputDiv.innerHTML += payment2.pay(500) + "<br>";
+outputDiv.innerHTML += payment3.pay(500);
+
+</script>
+
+</body>
+</html>
