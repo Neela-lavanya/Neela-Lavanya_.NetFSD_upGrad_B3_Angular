@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mini Product Search App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        #searchBox {
+            width: 300px;
+            padding: 8px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        #productList {
+            list-style-type: none;
+            padding: 0;
+            width: 300px;
+        }
+
+        #productList li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        #productList li:hover {
+            background-color: #f2f2f2;
+        }
+
+        .no-result {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Mini Product Search App</h2>
+
+    <input type="text" id="searchBox" placeholder="Search products...">
+
+    <ul id="productList"></ul>
+
+    <p id="message"></p>
+
+    <script>
+        const ProductApp = (function () {
+
+            const state = {
+                products: [
+                    { id: 1, name: "iPhone 15" },
+                    { id: 2, name: "Samsung Galaxy S23" },
+                    { id: 3, name: "OnePlus 11" },
+                    { id: 4, name: "MacBook Air" },
+                    { id: 5, name: "Dell XPS 13" },
+                    { id: 6, name: "Sony Headphones" }
+                ],
+                filteredProducts: []
+            };
+
+            const searchBox = document.getElementById("searchBox");
+            const productList = document.getElementById("productList");
+            const message = document.getElementById("message");
+            function renderProducts(products) {
+
+                productList.innerHTML = "";
+
+                if (products.length === 0) {
+                    message.textContent = "No Results Found";
+                    message.className = "no-result";
+                    return;
+                }
+
+                message.textContent = "";
+                message.className = "";
+
+                products.forEach(product => {
+                    const li = document.createElement("li");
+                    li.textContent = product.name;
+                    li.setAttribute("data-id", product.id);
+                    productList.appendChild(li);
+                });
+            }
+            function filterProducts(searchText) {
+
+                state.filteredProducts = state.products.filter(product =>
+                    product.name.toLowerCase().includes(searchText.toLowerCase())
+                );
+
+                renderProducts(state.filteredProducts);
+            }
+
+            function handleSearch(event) {
+                const value = event.target.value;
+                filterProducts(value);
+            }
+
+            function handleProductClick(event) {
+                if (event.target.tagName === "LI") {
+                    const id = event.target.getAttribute("data-id");
+                    alert("Product ID clicked: " + id);
+                }
+            }
+            function init() {
+                state.filteredProducts = state.products;
+                renderProducts(state.products);
+
+                searchBox.addEventListener("input", handleSearch);
+                productList.addEventListener("click", handleProductClick);
+            }
+
+            return {
+                init
+            };
+
+        })();
+        ProductApp.init();
+
+    </script>
+
+</body>
+</html>

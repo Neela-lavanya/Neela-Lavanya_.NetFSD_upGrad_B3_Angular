@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+</head>
+<body style="text-align:center; font-family:Arial; margin-top:50px;">
+
+    <h2>🌤 Weather Data Fetcher</h2>
+
+    <input type="text" id="city" placeholder="Enter City Name">
+    <br><br>
+
+    <button onclick="getWeatherPromise()">Get Weather (Promises)</button>
+    <button onclick="getWeatherAsync()">Get Weather (Async/Await)</button>
+
+    <div id="result" style="margin-top:20px;"></div>
+
+<script>
+
+const resultDiv = document.getElementById("result");
+const cities = {
+    hyderabad: { lat: 17.38, lon: 78.48 },
+    bangalore: { lat: 12.97, lon: 77.59 },
+    delhi: { lat: 28.61, lon: 77.20 },
+    madanapalli: { lat:13.55, lon: 78.50}
+};
+
+
+const getWeatherPromise = () => {
+
+    const cityName = document.getElementById("city").value.toLowerCase();
+    const location = cities[cityName];
+
+    if(!location){
+        resultDiv.innerHTML = "City not found!";
+        return;
+    }
+
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${location.lat}&longitude=${location.lon}&current_weather=true`;
+
+    fetch(url)
+    .then(response => {
+        if(!response.ok){
+            throw new Error("Network Error!");
+        }
+        return response.json();
+    })
+    .then(data => {
+
+        const weather = data.current_weather;
+
+        resultDiv.innerHTML = `
+            <h3>Weather Report (Promises)</h3>
+            <p> City: ${cityName}</p>
+            <p>Temperature: ${weather.temperature} °C</p>
+            <p>Wind Speed: ${weather.windspeed} km/h</p>
+        `;
+    })
+    .catch(error => {
+        resultDiv.innerHTML = `Error: ${error.message}`;
+    });
+};
+
+const getWeatherAsync = async () => {
+
+    try{
+
+        const cityName = document.getElementById("city").value.toLowerCase();
+        const location = cities[cityName];
+
+        if(!location){
+            throw new Error("City not found!");
+        }
+
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${location.lat}&longitude=${location.lon}&current_weather=true`;
+
+        const response = await fetch(url);
+
+        if(!response.ok){
+            throw new Error("Network Error!");
+        }
+
+        const data = await response.json();
+        const weather = data.current_weather;
+
+        resultDiv.innerHTML = `
+            <h3>Weather Report (Async/Await)</h3>
+            <p> City: ${cityName}</p>
+            <p> Temperature: ${weather.temperature} °C</p>
+            <p> Wind Speed: ${weather.windspeed} km/h</p>
+        `;
+
+    }
+    catch(error){
+        resultDiv.innerHTML = `Error: ${error.message}`;
+    }
+};
+
+</script>
+
+</body>
+</html>

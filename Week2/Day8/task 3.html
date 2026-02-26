@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager - Async Evolution</title>
+</head>
+<body style="font-family:Arial; text-align:center; margin-top:40px;">
+
+    <h2> Task Manager</h2>
+
+    <input type="text" id="taskInput" placeholder="Enter Task">
+    <br><br>
+
+    <button onclick="addTaskCallback()">Add (Callback)</button>
+    <button onclick="addTaskPromise()">Add (Promise)</button>
+    <button onclick="addTaskAsync()">Add (Async/Await)</button>
+    <button onclick="deleteTaskAsync()">Delete Last Task</button>
+    <button onclick="listTasks()">List Tasks</button>
+
+    <div id="output" style="margin-top:20px;"></div>
+
+<script>
+
+let tasks = [];   
+const output = document.getElementById("output");
+
+const addTaskWithCallback = (task, callback) => {
+
+    setTimeout(() => {
+        tasks.push(task);
+        callback(` Task Added (Callback): ${task}`);
+    }, 1000);
+};
+
+const addTaskCallback = () => {
+
+    const task = document.getElementById("taskInput").value;
+
+    if (!task) {
+        output.innerHTML = "Task cannot be empty";
+        return;
+    }
+
+    addTaskWithCallback(task, (message) => {
+        output.innerHTML = message;
+    });
+};
+
+//by using promise
+const addTaskWithPromise = (task) => {
+
+    return new Promise((resolve, reject) => {
+
+        setTimeout(() => {
+
+            if (!task) {
+                reject(" Task cannot be empty");
+            } else {
+                tasks.push(task);
+                resolve(`✅ Task Added (Promise): ${task}`);
+            }
+
+        }, 1000);
+
+    });
+};
+
+const addTaskPromise = () => {
+
+    const task = document.getElementById("taskInput").value;
+
+    addTaskWithPromise(task)
+        .then(message => {
+            output.innerHTML = message;
+        })
+        .catch(error => {
+            output.innerHTML = error;
+        });
+};
+//using Asyn/await
+const addTaskAsyncFunction = async (task) => {
+
+    if (!task) {
+        throw new Error("Task cannot be empty");
+    }
+
+    return new Promise(resolve => {
+
+        setTimeout(() => {
+            tasks.push(task);
+            resolve(`Task Added (Async/Await): ${task}`);
+        }, 1000);
+
+    });
+};
+
+const addTaskAsync = async () => {
+
+    try {
+
+        const task = document.getElementById("taskInput").value;
+        const message = await addTaskAsyncFunction(task);
+        output.innerHTML = message;
+
+    } catch (error) {
+
+        output.innerHTML = ` ${error.message}`;
+    }
+};
+
+
+const deleteTaskAsync = async () => {
+
+    if (tasks.length === 0) {
+        output.innerHTML = "⚠ No tasks to delete";
+        return;
+    }
+
+    await new Promise(resolve => {
+        setTimeout(() => {
+            tasks.pop();
+            resolve();
+        }, 1000);
+    });
+
+    output.innerHTML = "🗑 Last Task Deleted";
+};
+
+const listTasks = () => {
+
+    if (tasks.length === 0) {
+        output.innerHTML = " No Tasks Available";
+        return;
+    }
+
+    output.innerHTML = `
+        <h3>Task List</h3>
+        ${tasks.map((task, index) => 
+            `<p>${index + 1}. ${task}</p>`
+        ).join("")}
+    `;
+};
+
+</script>
+
+</body>
+</html>

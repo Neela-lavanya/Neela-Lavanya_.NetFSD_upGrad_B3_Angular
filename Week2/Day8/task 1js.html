@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Theme Toggle App</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            padding: 40px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .light {
+            background-color: white;
+            color: black;
+        }
+
+        .dark {
+            background-color: #121212;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>My Blog Website</h2>
+    <p>Welcome to my blog. You can switch between Light and Dark mode.</p>
+    <button id="toggleBtn">Switch Theme</button>
+</div>
+
+<script>
+
+const toggleBtn = document.getElementById("toggleBtn");
+const body = document.body;
+
+
+const applyTheme = (theme) => {
+
+    body.classList.remove("light", "dark");
+    body.classList.add(theme);
+
+    localStorage.setItem("theme", theme);
+};
+
+const toggleTheme = () => {
+
+    const currentTheme = body.classList.contains("dark") ? "dark" : "light";
+
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+    applyTheme(newTheme);
+};
+
+const loadTheme = () => {
+
+    const savedTheme = localStorage.getItem("theme") || "light";
+
+    applyTheme(savedTheme);
+};
+
+
+toggleBtn.addEventListener("click", toggleTheme);
+loadTheme();
+
+</script>
+
+</body>
+</html>
