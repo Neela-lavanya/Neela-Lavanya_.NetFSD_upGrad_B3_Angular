@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic FAQ Section</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+        }
+
+        .faq-container{
+            width: 600px;
+            margin: 50px auto;
+        }
+
+        .faq-item{
+            border-bottom: 1px solid #ccc;
+        }
+
+        .question{
+            cursor: pointer;
+            font-weight: bold;
+            padding: 12px;
+            background-color: #e9ecef;
+            transition: 0.3s;
+        }
+
+        .question:hover{
+            background-color: #d6d8db;
+        }
+
+        .answer{
+            display: none;
+            padding: 12px;
+            background-color: #ffffff;
+        }
+
+        .active{
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="faq-container">
+
+    <div class="faq-item">
+        <div class="question">1. What is jQuery?</div>
+        <div class="answer">
+            jQuery is a fast, small, and lightweight JavaScript library used to simplify HTML DOM manipulation, event handling, and animations.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">2. What are the uses of jQuery?</div>
+        <div class="answer">
+            jQuery is used for DOM manipulation, handling events, creating animations, performing AJAX requests, and simplifying JavaScript code.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">3. What is an anonymous function?</div>
+        <div class="answer">
+            An anonymous function is a function without a name. It is often used inside events like click() in jQuery.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">4. What is DOM traversal?</div>
+        <div class="answer">
+            DOM traversal means navigating between elements in the HTML structure using methods like next(), parent(), children(), etc.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">5. What is DOM manipulation?</div>
+        <div class="answer">
+            DOM manipulation means changing the content, structure, or style of HTML elements dynamically using methods like text(), html(), addClass(), removeClass().
+        </div>
+    </div>
+
+</div>
+
+<script>
+$(document).ready(function(){
+
+    $(".question").click(function(){
+
+        $(".answer").not($(this).next()).slideUp(400);
+
+        $(".question").not(this).removeClass("active");
+        $(this).next(".answer").slideToggle(400);
+        $(this).toggleClass("active");
+
+    });
+
+});
+</script>
+
+</body>
+</html>
