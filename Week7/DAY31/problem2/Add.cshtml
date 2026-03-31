@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Simple Calculator";
+}
+
+<h2>Simple Calculator</h2>
+
+<form method="post" asp-action="Add" asp-controller="Calculator">
+
+    <div>
+        <label>Number 1:</label>
+        <input type="number" name="num1" required />
+    </div>
+
+    <div>
+        <label>Number 2:</label>
+        <input type="number" name="num2" required />
+    </div>
+
+    <br />
+
+    <button type="submit">Add</button>
+</form>
+
+<br />
+
+@if (ViewData["Result"] != null)
+{
+    <h3>Result: @ViewData["Result"]</h3>
+}
+
