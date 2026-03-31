@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Student Registration";
+}
+
+<h2>Student Registration</h2>
+
+<form method="post" asp-action="Register" asp-controller="Student">
+    
+    <div>
+        <label>Name:</label>
+        <input type="text" name="name" required />
+    </div>
+
+    <div>
+        <label>Age:</label>
+        <input type="number" name="age" required />
+    </div>
+
+    <div>
+        <label>Course:</label>
+        <input type="text" name="course" required />
+    </div>
+
+    <br />
+    <button type="submit">Submit</button>
+</form>
