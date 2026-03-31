@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Feedback Form";
+}
+
+<h2 style="text-align:center;">Feedback Form</h2>
+
+<div style="width:400px; margin:auto; padding:20px; border:1px solid #ccc; border-radius:10px;">
+
+    <form method="post" asp-action="Form" asp-controller="Feedback">
+
+        <!-- Name -->
+        <div style="margin-bottom:15px;">
+            <label><b>Name</b></label><br />
+            <input type="text" name="name"
+                   style="width:100%; padding:8px; border-radius:5px;" required />
+        </div>
+
+        <!-- Comments -->
+        <div style="margin-bottom:15px;">
+            <label><b>Comments</b></label><br />
+            <textarea name="comments" rows="3"
+                      style="width:100%; padding:8px; border-radius:5px;" required></textarea>
+        </div>
+
+        <!-- Rating -->
+        <div style="margin-bottom:15px;">
+            <label><b>Rating (1–5)</b></label><br />
+            <input type="number" name="rating" min="1" max="5"
+                   style="width:100%; padding:8px; border-radius:5px;" required />
+        </div>
+
+        <!-- Button -->
+        <div style="text-align:center;">
+            <button type="submit"
+                    style="padding:10px 20px; border:none; border-radius:5px; background-color:#007bff; color:white;">
+                Submit
+            </button>
+        </div>
+
+    </form>
+
+    <br />
+
+    <!-- Message -->
+    @if (ViewData["Message"] != null)
+    {
+        <div style="text-align:center; font-weight:bold; color:green;">
+            @ViewData["Message"]
+        </div>
+    }
+
+</div>
