@@ -1,0 +1,28 @@
+﻿@model IEnumerable<WebApplication2.Models.Movie>
+
+<h2>Movies</h2>
+
+<a href="/Movie/Create">Add Movie</a>
+
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Price</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Title</td>
+            <td>@item.Genre</td>
+            <td>@item.Price</td>
+            <td>
+                <a href="/Movie/Edit/@item.Id">Edit</a> |
+                <a href="/Movie/Delete/@item.Id">Delete</a> |
+                <a href="/Movie/Details/@item.Id">Details</a>
+            </td>
+        </tr>
+    }
+</table>
