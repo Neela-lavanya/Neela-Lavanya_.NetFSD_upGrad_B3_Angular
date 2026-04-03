@@ -1,0 +1,21 @@
+﻿@model WebApplication2.Models.ContactInfo
+
+<h2>Contact Details</h2>
+
+@if (Model != null)
+{
+    <p><b>ID:</b> @Model.ContactId</p>
+    <p><b>Name:</b> @Model.FirstName @Model.LastName</p>
+    <p><b>Company:</b> @Model.CompanyName</p>
+    <p><b>Email:</b> @Model.EmailId</p>
+    <p><b>Mobile:</b> @Model.MobileNo</p>
+    <p><b>Designation:</b> @Model.Designation</p>
+}
+else
+{
+    <p style="color:red;">Contact not found</p>
+}
+
+<br />
+
+<a href="/Contact/ShowContacts">Back</a>

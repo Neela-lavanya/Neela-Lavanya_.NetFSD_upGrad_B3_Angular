@@ -1,0 +1,38 @@
+﻿@model List<WebApplication2.Models.ContactInfo>
+
+<h2>Contact List</h2>
+
+<a href="/Contact/AddContact">Add New Contact</a>
+
+<br />
+<br />
+
+<form method="get" action="/Contact/GetContactById">
+    <input type="number" name="id" placeholder="Enter ID" required />
+    <button type="submit">Search</button>
+</form>
+
+<br />
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Company</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Designation</th>
+    </tr>
+
+    @foreach (var c in Model)
+    {
+        <tr>
+            <td>@c.ContactId</td>
+            <td>@c.FirstName @c.LastName</td>
+            <td>@c.CompanyName</td>
+            <td>@c.EmailId</td>
+            <td>@c.MobileNo</td>
+            <td>@c.Designation</td>
+        </tr>
+    }
+</table>

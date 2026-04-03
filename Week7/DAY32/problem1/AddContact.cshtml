@@ -1,0 +1,32 @@
+﻿@model WebApplication2.Models.ContactInfo
+
+<h2>Add Contact</h2>
+
+<form method="post">
+    <label>ID:</label>
+    <input asp-for="ContactId" /><br /><br />
+
+    <label>First Name:</label>
+    <input asp-for="FirstName" /><br /><br />
+
+    <label>Last Name:</label>
+    <input asp-for="LastName" /><br /><br />
+
+    <label>Company:</label>
+    <input asp-for="CompanyName" /><br /><br />
+
+    <label>Email:</label>
+    <input asp-for="EmailId" /><br /><br />
+
+    <label>Mobile:</label>
+    <input asp-for="MobileNo" /><br /><br />
+
+    <label>Designation:</label>
+    <input asp-for="Designation" /><br /><br />
+
+    <button type="submit">Save</button>
+</form>
+
+<br />
+
+<a href="/Contact/ShowContacts">Back</a>
