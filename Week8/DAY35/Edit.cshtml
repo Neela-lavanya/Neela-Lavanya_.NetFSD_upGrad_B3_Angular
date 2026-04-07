@@ -1,0 +1,34 @@
+﻿@model WebApplication4.Models.ContactInfo
+
+<h2>Edit Contact</h2>
+
+<form asp-action="Edit" method="post">
+
+    <input type="hidden" asp-for="ContactId" />
+
+    <input asp-for="FirstName" />
+    <span asp-validation-for="FirstName"></span><br />
+
+    <input asp-for="LastName" />
+    <span asp-validation-for="LastName"></span><br />
+
+    <input asp-for="EmailId" />
+    <span asp-validation-for="EmailId"></span><br />
+
+    <input asp-for="MobileNo" />
+    <span asp-validation-for="MobileNo"></span><br />
+
+    <input asp-for="Designation" />
+    <span asp-validation-for="Designation"></span><br />
+
+    <select asp-for="CompanyId"
+            asp-items="@(new SelectList(ViewBag.Companies, "CompanyId", "CompanyName"))">
+    </select><br />
+
+    <select asp-for="DepartmentId"
+            asp-items="@(new SelectList(ViewBag.Departments, "DepartmentId", "DepartmentName"))">
+    </select><br />
+
+    <button type="submit">Update</button>
+
+</form>
