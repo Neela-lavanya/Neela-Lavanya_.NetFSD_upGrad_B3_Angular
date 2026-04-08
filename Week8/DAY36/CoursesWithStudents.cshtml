@@ -1,0 +1,15 @@
+﻿@model IEnumerable<WebApplication4.Models.Course>
+
+<h2>Courses with Students</h2>
+
+@foreach (var course in Model)
+{
+    <h3>@course.CourseName</h3>
+
+    <ul>
+        @foreach (var student in course.Students)
+        {
+            <li>@student.StudentName</li>
+        }
+    </ul>
+}
