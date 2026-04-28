@@ -1,0 +1,44 @@
+<h2>Contact Management</h2>
+
+<!-- Two-way binding -->
+<input type="text" [(ngModel)]="searchText" placeholder="Search by name/email">
+
+<button (click)="toggleView()">
+  {{ showAll ? 'Show Less' : 'Show More' }}
+</button>
+
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+
+  <!-- ngFor + pipes -->
+  <tr *ngFor="let contact of (contacts 
+        | search:searchText 
+        | slice:0:(showAll ? contacts.length : 5))">
+
+    <!-- Interpolation + built-in pipes -->
+    <td>{{ contact.name | titlecase }}</td>
+    <td>{{ contact.email | lowercase }}</td>
+
+    <!-- Custom pipe -->
+    <td>{{ contact.phone | phone }}</td>
+
+    <!-- Property binding -->
+    <td [ngStyle]="{color: contact.status ? 'green' : 'red'}">
+      {{ contact.status | status }}
+    </td>
+
+    <!-- Event binding -->
+    <td>
+      <button (click)="toggleStatus(contact)">
+        Toggle
+      </button>
+    </td>
+
+  </tr>
+</table>
